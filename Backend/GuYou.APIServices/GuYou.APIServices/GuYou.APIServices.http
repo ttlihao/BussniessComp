@@ -1,0 +1,6 @@
+@GuYou.APIServices_HostAddress = http://localhost:5101
+
+GET {{GuYou.APIServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
