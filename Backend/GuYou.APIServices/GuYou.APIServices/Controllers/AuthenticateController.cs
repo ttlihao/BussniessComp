@@ -1,4 +1,5 @@
-﻿using GuYou.Repositories.DTOs;
+﻿using GuYou.Repositories.Configure;
+using GuYou.Repositories.DTOs;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -47,7 +48,7 @@ namespace GuYou.APIServices.Controllers
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
         {
-            await _authenticateService.ForgotPassword(request.Email);
+            await _authenticateService.ForgotPassword(request.Email, EnvironmentType.Development);
             return Ok();
         }
 
@@ -57,6 +58,27 @@ namespace GuYou.APIServices.Controllers
             var response = await _authenticateService.ResetPassword(request);
             return Ok(response);
         }
+
+        [HttpPost("reset-password-link")]
+        public async Task<IActionResult> ResetPasswordViaLink([FromQuery] string email, [FromQuery] string code, [FromBody] ResetPasswordDTO request)
+        {
+            // Check if the email and code are provided in the query parameters
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(code))
+            {
+                return BadRequest("Email and code must be provided.");
+            }
+
+            // Assign the email and code from query parameters to the DTO
+            request.Email = email;
+            request.Code = code;
+
+            // Call the reset password service
+            var response = await _authenticateService.ResetPassword(request);
+
+            return Ok(response);
+        }
+
+
 
 
     }
