@@ -1,4 +1,5 @@
-﻿using GuYou.Repositories.Models;
+﻿using GuYou.Repositories.DbContext;
+using GuYou.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,14 @@ namespace GuYou.Repositories.Base
 
     public class GenericRepository<T> where T : class
     {
-        protected CoffeeShopDBContext _context;
+        protected CoffeShopManagementContext _context;
 
         public GenericRepository()
         {
-            _context ??= new CoffeeShopDBContext();
+            _context ??= new CoffeShopManagementContext();
         }
 
-        public GenericRepository(CoffeeShopDBContext context)
+        public GenericRepository(CoffeShopManagementContext context)
         {
             _context = context;
         }
