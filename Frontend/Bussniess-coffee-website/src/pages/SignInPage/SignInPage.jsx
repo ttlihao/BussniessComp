@@ -1,8 +1,12 @@
 import React from "react";
 import "./SignInPage.scss";
 import { Button, Checkbox, Form, Input } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function SignInPage() {
+  // const navigate = useNavigate();
+
+  // const handleSignUp = () => navigate("/sign-up");
   return (
     <div className="signin-container">
       <div className="signin-wrapper">
@@ -11,8 +15,8 @@ function SignInPage() {
           Bạn chưa có tài khoản? <a href="">Đăng Kí</a>
         </p> */}
         <p class="font-medium text-lg text-center mb-6 text-white">
-          Bạn chưa có tài khoản?
-          <a href="" class="underline text-white hover:text-[#ba0000]">
+          Bạn chưa có tài khoản? &nbsp;
+          <a href="/sign-up" class="underline text-white hover:text-[#ba0000]">
             Đăng Kí
           </a>
         </p>
