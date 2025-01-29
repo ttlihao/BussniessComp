@@ -1,0 +1,113 @@
+// * {
+//   border: 1px solid white;
+// }
+
+.signin-container {
+  // background-image: url("imgs/guyou-login-bg.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("imgs/guyou-login-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  // height: 80vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  .signin-wrapper {
+    width: 480px;
+    margin: 3rem auto;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 48px;
+    text-align: center;
+  }
+
+  // p {
+  //   font-weight: 500;
+  //   font-style: 20px;
+  //   text-align: center;
+  //   margin-bottom: 25px;
+
+  //   a {
+  //     text-decoration: underline;
+  //   }
+  // }
+
+  .btn-login-with {
+    background-color: white;
+    height: 56px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #333;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+    }
+    p {
+      font-size: 14px;
+      color: #333;
+      margin-left: 10px;
+    }
+  }
+}
+
+.form-label {
+  color: white; /* Màu chữ */
+  font-size: 16px; /* Kích thước chữ */
+}
+
+.form-input {
+  height: 55px; /* Chiều cao input */
+  border-radius: 10px; /* Bo góc */
+  font-size: 14px; /* Kích thước chữ */
+  color: #b9b9b9; /* Màu chữ */
+  padding-left: 20px;
+  // text-align: center; /* Canh giữa chữ */
+}
+
+.btn-submit-custom {
+  background-color: #ba0000;
+  color: white;
+  height: 56px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px; /* Bo góc */
+  transition: opacity 0.3s; /* Thêm hiệu ứng hover */
+}
+
+.btn-submit-custom:hover {
+  opacity: 0.7; /* Khi hover */
+}
+
+.btn-custom {
+  background-color: #ba0000;
+  border-radius: 10px;
+  width: 100%;
+  height: 56px;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #ff2121;
+}
