@@ -37,7 +37,15 @@ namespace GuYou.Services.Implements
             {
                 foreach (var to in toList)
                 {
-                    var mailMessage = new MailMessage(_senderEmail, to, subject, body);
+                    var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress(_senderEmail),
+                        Subject = subject,
+                        Body = body,
+                        IsBodyHtml = true // Enable HTML content
+                    };
+                    mailMessage.To.Add(to);
+
                     await _smtpClient.SendMailAsync(mailMessage);
                 }
             }
