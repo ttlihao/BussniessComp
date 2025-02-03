@@ -11,6 +11,12 @@ function Footer() {
       <div className="footer-wrapper">
         <div className="footer-item">
           <h2>LOGO</h2>
+          {/* <img
+          src="/logo.png"
+          alt="logo"
+          className="logo-style"
+          onClick={handleHome}
+        /> */}
           <p>
             Xưởng cung cấp cà phê sạch tốt cho sức khoẻ. Chúng tôi tự hào cung
             cấp hạt cà phê chất lượng cao, được chọn lọc từ các vùng trồng cà
