@@ -29,15 +29,15 @@ namespace GuYou.Repositories.DTOs
     }
     public class ResetPasswordDTO
     {
-        public ResetPasswordDTO(string email, string code,  string newPassword, string confirmPassword)
+        public ResetPasswordDTO(string email, string otp,  string newPassword, string confirmPassword)
         {
             Email = email;
             NewPassword = newPassword;
-            Code = code;
+            OTP = otp;
             ConfirmPassword = confirmPassword;
         }
         public string Email { get; set; }
-        public string Code { get; set; }
+        public string OTP { get; set; }
         public string NewPassword { get; set; }
         public string ConfirmPassword { get; set; }
     }

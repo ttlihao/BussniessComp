@@ -375,7 +375,7 @@ namespace GuYou.Services.Implements
                 throw new InvalidOperationException("User not found");
             }
 
-            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(user, user.EmailCode, request.Code);
+            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(user, user.EmailCode, request.OTP);
             if (verificationResult == PasswordVerificationResult.Failed)
             {
                 return IdentityResult.Failed(new IdentityError { Description = "Invalid token." });

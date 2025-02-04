@@ -58,6 +58,27 @@ namespace GuYou.APIServices.Controllers
             return Ok(response);
         }
 
+        [HttpPost("reset-password-link")]
+        public async Task<IActionResult> ResetPasswordViaLink([FromQuery] string email, [FromQuery] string otp, [FromBody] ResetPasswordDTO request)
+        {
+            // Check if the email and code are provided in the query parameters
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(otp))
+            {
+                return BadRequest("Email and code must be provided.");
+            }
+
+            // Assign the email and code from query parameters to the DTO
+            request.Email = email;
+            request.OTP = otp;
+
+            // Call the reset password service
+            var response = await _authenticateService.ResetPassword(request);
+
+            return Ok(response);
+        }
+
+
+
 
     }
 }
