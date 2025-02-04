@@ -1,4 +1,5 @@
-﻿using GuYou.Repositories.DTOs;
+﻿using GuYou.Repositories.Configure;
+using GuYou.Repositories.DTOs;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -47,7 +48,7 @@ namespace GuYou.APIServices.Controllers
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
         {
-            await _authenticateService.ForgotPassword(request.Email);
+            await _authenticateService.ForgotPassword(request.Email, EnvironmentType.Development);
             return Ok();
         }
 

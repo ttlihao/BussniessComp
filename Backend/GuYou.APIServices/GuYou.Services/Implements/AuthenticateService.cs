@@ -13,6 +13,7 @@ using GuYou.Repositories.Repositories.Interfaces;
 using GuYou.Repositories.Base;
 using Azure.Core;
 using Microsoft.AspNetCore.Http;
+using GuYou.Repositories.Configure;
 
 namespace GuYou.Services.Implements
 {
@@ -352,7 +353,7 @@ namespace GuYou.Services.Implements
             return await _userManager.ChangePasswordAsync(existingUser, request.OldPassword, request.NewPassword);
         }
 
-        public async Task ForgotPassword(string email)
+        public async Task ForgotPassword(string email, EnvironmentType environment)
         {
             var user = await _userManager.FindByEmailAsync(email) ??
                        throw new InvalidOperationException("User not found");
@@ -364,7 +365,73 @@ namespace GuYou.Services.Implements
             await _userManager.UpdateAsync(user);
 
             var selectedEmail = new List<string> { email };
-            await _emailService.SendEmailAsync(selectedEmail, "Password Reset Code", $"Your reset code is: {code}");
+
+            // Create an instance of EnumExtension
+            var enumExtension = new EnumExtension();
+
+            // Get the base URL using the GetBaseUrl method
+            var baseUrl = enumExtension.GetBaseUrl(environment);
+
+            var resetUrl = $"{baseUrl}/reset-password?email={email}&code={code}";
+
+            var emailBody = $@"
+        <!DOCTYPE html>
+        <html lang=""en"">
+        <head>
+            <meta charset=""UTF-8"">
+            <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+            <style>
+                .button {{
+                    display: inline-block;
+                    padding: 10px 20px;
+                    background-color: #555;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    text-align: center;
+                }}
+                .code-box {{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 20px 0;
+                    padding: 10px;
+                    border: 2px solid #000;
+                    font-weight: bold;
+                    font-size: 1.5em;
+                    background-color: #f9f9f9;
+                    border-radius: 5px;
+                }}
+                .content {{
+                    font-family: Arial, sans-serif;
+                    color: #333;
+                    line-height: 1.6;
+                }}
+            </style>
+        </head>
+        <body class=""content"">
+            <p>Hi {user.UserName},</p>
+
+            <p>Forgot your password?</p>
+            <p>We received a request to reset the password for your account.</p>
+
+            <p>Your secret code is:</p>
+            <div class=""code-box"">{code}</div>
+
+            <p>To reset your password, click on the button below:</p>
+            <p><a href='{resetUrl}' class='button'>Reset password</a></p>
+
+            <p>Or copy and paste the URL into your browser:</p>
+            <p><a href='{resetUrl}'>{resetUrl}</a></p>
+
+            <p>If you didn't request this, please ignore this email.</p>
+            <p>Thanks,</p>
+            <p>GuYou Coffee</p>
+        </body>
+        </html>
+    ";
+
+            await _emailService.SendEmailAsync(selectedEmail, "Password Reset", emailBody);
         }
 
         public async Task<IdentityResult> ResetPassword(ResetPasswordDTO request)

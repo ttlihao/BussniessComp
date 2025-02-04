@@ -1,4 +1,5 @@
-﻿using GuYou.Repositories.DTOs;
+﻿using GuYou.Repositories.Configure;
+using GuYou.Repositories.DTOs;
 using GuYou.Repositories.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -26,7 +27,7 @@ namespace GuYou.Services.Interfaces
         Task<bool> DeactiveUserAsync(string userId);
         Task<bool> ActiveUserAsync(string userId);
         Task<User?> GetUserByRefreshTokenAsync(string refreshToken);
-        Task ForgotPassword(string email);
+        Task ForgotPassword(string email, EnvironmentType type);
         Task<IdentityResult> ResetPassword(ResetPasswordDTO request);
         Task<Dictionary<string, string>> GetFullNamesByIdsAsync(IEnumerable<string> userIds);
     }
