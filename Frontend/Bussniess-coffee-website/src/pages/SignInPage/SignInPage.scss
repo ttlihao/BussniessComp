@@ -1,3 +1,12 @@
+.form-input {
+  height: 55px; /* Chiều cao input */
+  border-radius: 10px; /* Bo góc */
+  font-size: 14px; /* Kích thước chữ */
+  color: #333; /* Màu chữ */
+  padding-left: 20px;
+  // text-align: center; /* Canh giữa chữ */
+}
+
 .signin-container {
   // background-image: url("imgs/guyou-login-bg.jpg");
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -57,20 +66,15 @@
       margin-left: 10px;
     }
   }
+
+  .form-input {
+    color: black;
+  }
 }
 
 .form-label {
   color: white; /* Màu chữ */
   font-size: 16px; /* Kích thước chữ */
-}
-
-.form-input {
-  height: 55px; /* Chiều cao input */
-  border-radius: 10px; /* Bo góc */
-  font-size: 14px; /* Kích thước chữ */
-  color: #b9b9b9; /* Màu chữ */
-  padding-left: 20px;
-  // text-align: center; /* Canh giữa chữ */
 }
 
 .btn-custom {

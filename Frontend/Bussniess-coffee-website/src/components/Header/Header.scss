@@ -1,5 +1,7 @@
+@use "../../untils/base";
+
 .header-container {
-  background-color: #ba0000;
+  background-color: base.$primary-color;
   height: 82px;
 
   display: flex;
@@ -20,7 +22,7 @@
   }
 
   .h-item {
-    color: white;
+    color: base.$color-primary-2;
 
     font-size: 16px;
     line-height: 20px;
@@ -31,7 +33,7 @@
   }
 
   .h-btn {
-    border: 1px solid #fffdfd;
+    border: 1px solid base.$color-primary-2;
     width: 112px;
     border-radius: 5px;
     height: 40px;
@@ -42,12 +44,34 @@
     margin: auto 10px;
   }
   .btn-sign-in {
-    background-color: #fff4e1;
-    color: #ba0000;
+    background-color: base.$color-primary-2;
+    color: base.$primary-color;
   }
 
   .btn-sign-up {
-    background-color: #ba0000;
-    color: #fff4e1;
+    background-color: base.$primary-color;
+    color: base.$color-primary-2;
+  }
+
+  .header-user-item {
+    display: flex;
+    gap: 20px;
+
+    button {
+      display: flex;
+      width: 130px;
+      height: 40;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: base.$color-primary-2;
+
+      border: 1px solid base.$color-primary-2;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: base.$button-hover-color;
+      }
+    }
   }
 }
