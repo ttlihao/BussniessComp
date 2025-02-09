@@ -216,11 +216,11 @@ namespace GuYou.Services.Implements
                 DateTime expiresDateTime;
                 if (isRefreshToken)
                 {
-                    expiresDateTime = _timeService.SystemTimeNow.AddHours(_exRefreshToken).DateTime;
+                    expiresDateTime = _timeService.SystemTimeNow.AddDays(_exRefreshToken).DateTime;
                 }
                 else
                 {
-                    expiresDateTime = _timeService.SystemTimeNow.AddMinutes(_exAccessToken).DateTime;
+                    expiresDateTime = _timeService.SystemTimeNow.AddDays(_exAccessToken).DateTime;
                 }
 
 
@@ -280,9 +280,9 @@ namespace GuYou.Services.Implements
                 // Save Database
                 user.VerificationToken = accessToken;
                 user.ResetToken = refreshToken;
-                user.VerificationTokenExpires = _timeService.SystemTimeNow.AddHours(_exRefreshToken);
-                user.VerificationTokenExpires = _timeService.SystemTimeNow.AddHours(_exRefreshToken);
-                user.ResetTokenExpires = _timeService.SystemTimeNow.AddHours(_exAccessToken);
+                user.VerificationTokenExpires = _timeService.SystemTimeNow.AddDays(_exRefreshToken);
+                user.VerificationTokenExpires = _timeService.SystemTimeNow.AddDays(_exRefreshToken);
+                user.ResetTokenExpires = _timeService.SystemTimeNow.AddDays(_exAccessToken);
                 await _userManager.UpdateAsync(user);
                 return new LoginResponse
                 {

@@ -1,76 +1,207 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./SignUpPage.scss";
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-  return (
-    <div className="signup-container">
-      {/* <div > */}
+  const navigate = useNavigate();
 
-      <Form name="register" layout="vertical" className="signup-wrapper">
+  const handleFinish = useCallback(
+    async (values) => {
+      try {
+        const payload = {
+          email: values.email,
+          username: values.username,
+          password: values.password,
+          fullName: values.name,
+          phoneNumber: values.phone,
+          roleID: "b3caf412-8676-4f80-95c5-a03853e2f189", // Role mặc định
+        };
+
+        const response = await axios.post(
+          "https://localhost:7240/api/authenticate/register",
+          payload,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "text/plain",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          message.success("Đăng ký thành công!");
+          setTimeout(() => {
+            navigate("/sign-in");
+          }, 2000); // Chuyển trang sau 2 giây
+        }
+      } catch (error) {
+        console.error("Lỗi đăng ký:", error);
+        message.error("Đăng ký thất bại. Vui lòng thử lại!");
+      }
+    },
+    [navigate]
+  );
+
+  const handleFinishFailed = useCallback((error) => {
+    console.log("Lỗi form:", error);
+  }, []);
+
+  return (
+    <div className="signup-container mt-[82px]">
+      <Form
+        name="register"
+        layout="vertical"
+        className="signup-wrapper"
+        onFinish={handleFinish}
+        onFinishFailed={handleFinishFailed}
+      >
         <h1>Tạo tài khoản</h1>
+
+        {/* Tên */}
         <Form.Item
           name="name"
           className="form-custom"
           hasFeedback
-          // validateTrigger="onBlur"
-          validateFirst
-          rules={[{ min: 0, message: "Vui lòng nhập tên!" }]}
+          rules={[{ required: true, message: "Vui lòng nhập tên!" }]}
         >
-          <Input placeholder="Tên" className="form-input" />
+          <Input placeholder="Tên" className="form-input" autoComplete="name" />
         </Form.Item>
 
+        {/* Số điện thoại */}
         <Form.Item
-          name="usernam"
+          name="phone"
           className="form-custom"
           hasFeedback
-          rules={[{ required: true, message: "Vui lòng nhập username!" }]}
+          normalize={(value) => value.replace(/\s/g, "")}
+          rules={[
+            { required: true, message: "Vui lòng nhập SĐT!" },
+            {
+              pattern: /^\d{10}$/,
+              message: "Số điện thoại phải có 10 chữ số!",
+            },
+          ]}
         >
-          <label className="form-label">Tên Đăng nhập</label>
-          <Input placeholder="Enter your Username" className="form-input" />
+          <Input
+            placeholder="Số điện thoại"
+            className="form-input"
+            autoComplete="tel"
+          />
         </Form.Item>
 
+        {/* Tên đăng nhập */}
+        <Form.Item
+          name="username"
+          className="form-custom"
+          hasFeedback
+          rules={[
+            { required: true, message: "Vui lòng nhập username!" },
+            { min: 6, message: "Tên đăng nhập phải có ít nhất 6 ký tự!" },
+          ]}
+        >
+          <div>
+            <label className="form-label">Tên Đăng nhập</label>
+            <Input
+              placeholder="Nhập username"
+              className="form-input"
+              autoComplete="username"
+            />
+          </div>
+        </Form.Item>
+
+        {/* Email */}
         <Form.Item
           name="email"
           className="form-custom"
           hasFeedback
-          rules={[{ required: true, message: "Vui lòng nhập email!" }]}
+          rules={[
+            { required: true, message: "Vui lòng nhập email!" },
+            { type: "email", message: "Email không hợp lệ!" },
+          ]}
         >
-          <label className="form-label">Email</label>
-          <Input placeholder="Enter your Email" className="form-input" />
+          <div>
+            <label className="form-label">Email</label>
+            <Input
+              placeholder="Nhập email"
+              className="form-input"
+              autoComplete="email"
+            />
+          </div>
         </Form.Item>
 
+        {/* Mật khẩu */}
         <div className="flex gap-[22px]">
           <Form.Item
             name="password"
             className="form-custom"
             hasFeedback
-            rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
+            rules={[
+              { required: true, message: "Vui lòng nhập mật khẩu!" },
+              { min: 8, message: "Mật khẩu phải có ít nhất 8 ký tự!" },
+              { max: 20, message: "Mật khẩu không được vượt quá 20 ký tự!" },
+              {
+                pattern: /[A-Z]/,
+                message: "Mật khẩu phải chứa ít nhất 1 chữ in hoa!",
+              },
+              {
+                pattern: /[a-z]/,
+                message: "Mật khẩu phải chứa ít nhất 1 chữ thường!",
+              },
+              {
+                pattern: /\d/,
+                message: "Mật khẩu phải chứa ít nhất 1 chữ số!",
+              },
+              {
+                pattern: /[\W_]/,
+                message: "Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt!",
+              },
+            ]}
           >
-            <label className="form-label">Mật khẩu</label>
-            <Input.Password
-              placeholder="Enter your Password"
-              className="form-input"
-            />
+            <div>
+              <label className="form-label">Mật khẩu</label>
+              <Input.Password
+                placeholder="Nhập mật khẩu"
+                className="form-input"
+                autoComplete="new-password"
+              />
+            </div>
           </Form.Item>
 
+          {/* Xác nhận mật khẩu */}
           <Form.Item
             name="confirm"
             className="form-custom"
+            dependencies={["password"]}
             hasFeedback
-            rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
+            rules={[
+              { required: true, message: "Vui lòng nhập lại mật khẩu!" },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error("Mật khẩu xác nhận không khớp!")
+                  );
+                },
+              }),
+            ]}
           >
-            <label className="form-label">Xác nhận Mật khẩu</label>
-            <Input.Password
-              placeholder="Enter your Password again"
-              className="form-input"
-            />
+            <div>
+              <label className="form-label">Xác nhận Mật khẩu</label>
+              <Input.Password
+                placeholder="Nhập lại mật khẩu"
+                className="form-input"
+                autoComplete="new-password"
+              />
+            </div>
           </Form.Item>
         </div>
 
         <Form.Item className="flex justify-center items-center">
           <button type="submit" className="btn-custom-register">
-            Đăng nhập
+            Đăng ký
           </button>
         </Form.Item>
 
@@ -79,7 +210,6 @@ function SignUpPage() {
           <u>Chính Sách Bảo Mật</u> bao gồm việc sử dụng <u>Cookie</u>
         </p>
       </Form>
-      {/* </div> */}
     </div>
   );
 }

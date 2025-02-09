@@ -1,22 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignInPage.scss";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input, message, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { CheckCircleOutlined } from "@ant-design/icons";
 
 function SignInPage() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // const handleSignUp = () => navigate("/sign-up");
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post(
+        "https://localhost:7240/api/authenticate/login",
+        values,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (response.data) {
+        // Lưu thông tin vào cookie (thời gian hết hạn 30 ngày)
+        Cookies.set("userData", JSON.stringify(response.data), { expires: 30 });
+
+        // Hiển thị thông báo thành công
+        setIsModalVisible(true);
+
+        setTimeout(() => {
+          setIsModalVisible(false);
+          navigate("/");
+        }, 2000);
+      }
+    } catch (error) {
+      message.error("Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.");
+    }
+  };
+
   return (
-    <div className="signin-container">
+    <div className="signin-container mt-[82px]">
       <div className="signin-wrapper">
         <h1>Đăng nhập</h1>
-        {/* <p>
-          Bạn chưa có tài khoản? <a href="">Đăng Kí</a>
-        </p> */}
-        <p class="font-medium text-lg text-center mb-6 text-white">
+        <p className="font-medium text-lg text-center mb-6 text-white">
           Bạn chưa có tài khoản? &nbsp;
-          <a href="/sign-up" class="underline text-white hover:text-[#ba0000]">
+          <a
+            href="/sign-up"
+            className="underline text-white hover:text-[#ba0000]"
+          >
             Đăng Kí
           </a>
         </p>
@@ -29,69 +60,48 @@ function SignInPage() {
           <img src="icons/facebook.png" alt="facebook icon" />
           <p>Tiếp tục với Facebook</p>
         </div>
-        {/* <div class="flex items-center my-4">
-          <div class="flex-1 border-t border-gray-300"></div>
-          <span class="px-4 text-gray-500 bg-white">Hoặc</span>
-          <div class="flex-1 border-t border-gray-300"></div>
-        </div> */}
-        <div class="flex items-center my-4">
-          <div class="flex-1 border-t border-white"></div>
-          <span class="px-4 text-white">Hoặc</span>
-          <div class="flex-1 border-t border-white"></div>
+
+        <div className="flex items-center my-4">
+          <div className="flex-1 border-t border-white"></div>
+          <span className="px-4 text-white">Hoặc</span>
+          <div className="flex-1 border-t border-white"></div>
         </div>
 
-        <Form name="login" layout="vertical">
+        <Form name="login" layout="vertical" onFinish={onFinish}>
           <Form.Item
-            // label="Địa chỉ email"
-            name="email"
+            name="userName"
             className="form-custom"
-            rules={[{ required: true, message: "Vui lòng nhập email!" }]}
+            rules={[{ required: true, message: "Vui lòng nhập Username!" }]}
           >
-            <label className="form-label">Địa chỉ email</label>
-            <Input placeholder="Enter your Email" className="form-input" />
+            <div>
+              <label className="form-label">Username</label>
+              <Input placeholder="Enter your Username" className="form-input" />
+            </div>
           </Form.Item>
 
           <Form.Item
-            // label="Mật khẩu của bạn"
             name="password"
             className="form-custom"
             rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
           >
-            <label className="form-label">Mật khẩu của bạn</label>
-            <Input.Password
-              placeholder="Enter your Password"
-              className="form-input"
-            />
+            <div>
+              <label className="form-label">Mật khẩu của bạn</label>
+              <Input.Password
+                placeholder="Enter your Password"
+                className="form-input"
+              />
+            </div>
           </Form.Item>
 
-          {/* <a href="">Quên mật khẩu?</a>
-          <div className="check-login">
-            <Checkbox />
-            <p>Giữ tôi đăng nhập đến khi tôi đăng xuất</p>
-          </div> */}
-          <div class="text-white">
+          <div className="text-white mb-4">
             <a
               href=""
-              class="block text-right underline hover:text-[#ba0000] mt-[-18px]"
+              className="block text-right underline hover:text-[#ba0000] mt-[-18px]"
             >
               Quên mật khẩu
             </a>
-            <div class="flex items-center mt-0 mb-4">
-              <input type="checkbox" class="w-4 h-4 mr-2" />
-              <p>Giữ tôi đăng nhập đến khi tôi đăng xuất</p>
-            </div>
           </div>
 
-          {/* <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              block
-              className="btn-submit-custom"
-            >
-              Đăng nhập
-            </Button>
-          </Form.Item> */}
           <Form.Item>
             <button type="submit" className="btn-custom">
               Đăng nhập
@@ -99,6 +109,22 @@ function SignInPage() {
           </Form.Item>
         </Form>
       </div>
+
+      {/* Popup đăng nhập thành công */}
+      <Modal
+        open={isModalVisible}
+        footer={null}
+        closable={false}
+        centered
+        zIndex={20}
+        className="custom-modal"
+      >
+        <div className="modal-content">
+          <CheckCircleOutlined className="success-icon" />
+          <h2>Đăng nhập thành công!</h2>
+          <p>Hệ thống sẽ chuyển trang trong giây lát...</p>
+        </div>
+      </Modal>
     </div>
   );
 }
