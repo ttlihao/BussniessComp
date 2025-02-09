@@ -77,7 +77,12 @@ namespace GuYou.APIServices.Controllers
 
             return Ok(response);
         }
-
+        [HttpPost("verify-OTP")]
+        public async Task<IActionResult> VerifyOTP([FromQuery] string email, [FromQuery] string otp)
+        {
+            var response = await _authenticateService.VerifyOTP(email, otp);
+            return Ok(response);
+        }
 
 
 

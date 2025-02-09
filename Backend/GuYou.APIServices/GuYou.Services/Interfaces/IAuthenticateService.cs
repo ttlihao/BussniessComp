@@ -30,5 +30,6 @@ namespace GuYou.Services.Interfaces
         Task ForgotPassword(string email, EnvironmentType type);
         Task<IdentityResult> ResetPassword(ResetPasswordDTO request);
         Task<Dictionary<string, string>> GetFullNamesByIdsAsync(IEnumerable<string> userIds);
+        Task<IdentityResult> VerifyOTP(string email, string otp);
     }
 }

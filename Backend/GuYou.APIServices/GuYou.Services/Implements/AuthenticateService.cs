@@ -462,6 +462,23 @@ namespace GuYou.Services.Implements
 
             return result;
         }
+        public async Task<IdentityResult> VerifyOTP(string email, string otp)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                throw new InvalidOperationException("User not found");
+            }
+
+            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(user, user.EmailCode, otp);
+            if (verificationResult == PasswordVerificationResult.Failed)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Invalid OTP." });
+            }
+
+            return IdentityResult.Success;
+        }
+
 
     }
 }
