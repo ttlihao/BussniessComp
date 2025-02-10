@@ -1,5 +1,7 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import ScrollToTop from "@/components/ScrollTop/ScrollToTop";
+import ForgotPasswordPage from "@/pages/ForgotPasswordPage/ForgotPasswordPage";
 import HomePage from "@/pages/HomePage/HomePage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import SignInPage from "@/pages/SignInPage/SignInPage";
@@ -12,6 +14,7 @@ export const router = createBrowserRouter([
     element: (
       <>
         <Header />
+        <ScrollToTop />
         <Outlet />
         <Footer />
       </>
@@ -28,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUpPage />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPasswordPage />,
       },
     ],
   },
