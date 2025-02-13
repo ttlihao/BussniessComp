@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { CheckCircleOutlined } from "@ant-design/icons";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 function SignInPage() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ function SignInPage() {
 
           <div className="text-white mb-4">
             <a
-              href=""
+              href="/forgot-password"
               className="block text-right underline hover:text-[#ba0000] mt-[-18px]"
             >
               Quên mật khẩu
@@ -117,10 +118,15 @@ function SignInPage() {
         closable={false}
         centered
         zIndex={20}
+        width={420}
         className="custom-modal"
       >
         <div className="modal-content">
-          <CheckCircleOutlined className="success-icon" />
+          <RiVerifiedBadgeFill
+            color="green"
+            // style={{ height: 100, width: 100 }}
+            size={100}
+          />
           <h2>Đăng nhập thành công!</h2>
           <p>Hệ thống sẽ chuyển trang trong giây lát...</p>
         </div>
