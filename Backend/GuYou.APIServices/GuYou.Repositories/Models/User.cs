@@ -20,7 +20,8 @@ namespace GuYou.Repositories.Models
         public DateTimeOffset? VerificationTokenExpires { get; set; }
 
         // Navigation properties
-
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
         // Base Entity
         public DateTimeOffset CreatedTime { get; set; }
         public DateTimeOffset LastUpdatedTime { get; set; }
