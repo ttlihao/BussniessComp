@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using AutoMapper;
 using GuYou.Repositories.Configure;
 using FluentValidation;
-using GuYou.Repositories.Services;
 using GuYou.Services.Implements;
 using GuYou.Services.Interfaces;
 using GuYou.Repositories.Repositories.Interfaces;
@@ -117,6 +116,37 @@ builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
+// Add the services for the newly implemented entities
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICoffeeBeanService, CoffeeBeanServices>();
+builder.Services.AddScoped<ICoffeeMixService, CoffeeMixServices>();
+builder.Services.AddScoped<ICoffeeMixDetailService, CoffeeMixDetailServices>();
+builder.Services.AddScoped<IDiscountService, DiscountServices>();
+builder.Services.AddScoped<IInventoryService, InventoryServices>();
+builder.Services.AddScoped<IOrderService, OrderServices>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailServices>();
+builder.Services.AddScoped<IPackagingService, PackagingServices>();
+builder.Services.AddScoped<IPaymentService, PaymentServices>();
+builder.Services.AddScoped<IReviewService, ReviewServices>();
+builder.Services.AddScoped<IReviewLikeService, ReviewLikeServices>();
+builder.Services.AddScoped<IShippingDetailService, ShippingDetailServices>();
+builder.Services.AddScoped<ISupplierService, SupplierServices>();
+
+// Add the repositories for dependency injection
+builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<CoffeeBeanRepository>();
+builder.Services.AddScoped<CoffeeMixRepository>();
+builder.Services.AddScoped<CoffeeMixDetailRepository>();
+builder.Services.AddScoped<DiscountRepository>();
+builder.Services.AddScoped<InventoryRepository>();
+builder.Services.AddScoped<OrderRepository>();
+builder.Services.AddScoped<OrderDetailRepository>();
+builder.Services.AddScoped<PackagingRepository>();
+builder.Services.AddScoped<PaymentRepository>();
+builder.Services.AddScoped<ReviewRepository>();
+builder.Services.AddScoped<ReviewLikeRepository>();
+builder.Services.AddScoped<ShippingDetailRepository>();
+builder.Services.AddScoped<SupplierRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -156,7 +186,8 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
+        ClockSkew = TimeSpan.FromMinutes(5)
     };
 })
 .AddCookie(options =>

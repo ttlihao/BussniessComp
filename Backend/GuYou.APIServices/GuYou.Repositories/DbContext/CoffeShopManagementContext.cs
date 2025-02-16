@@ -17,12 +17,20 @@ namespace GuYou.Repositories.DbContext
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<CoffeeMix> CoffeeMixes { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<ReviewLike> ReviewLikes { get; set; }
-        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<CoffeeMix> CoffeeMix { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Review> Review { get; set; }
+        public DbSet<ReviewLike> ReviewLike { get; set; }
+        public DbSet<Discount> Discount { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<CoffeeBean> CoffeeBean { get; set; }
+        public DbSet<CoffeeMixDetail> CoffeeMixDetail { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<Packaging> Packaging { get; set; }
+        public DbSet<ShippingDetail> ShippingDetail { get; set; }
+        public DbSet<Supplier> Supplier { get; set; }
 
         public static string GetConnectionString(string connectionStringName)
         {

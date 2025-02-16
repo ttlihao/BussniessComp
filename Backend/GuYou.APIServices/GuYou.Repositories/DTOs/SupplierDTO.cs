@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuYou.Repositories.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace GuYou.Repositories.DTOs
 {
-    public class RoleResponse
+    public class SupplierDto : BaseEntity
     {
-        public string Id { get; set; }
+        public int SupplierId { get; set; }
         public string Name { get; set; }
-        public string NormalizedName { get; set; }
-        public string ConcurrencyStamp { get; set; }
+        public string ContactInfo { get; set; }
     }
+
 }

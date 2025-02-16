@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuYou.Repositories.DTOs
+namespace GuYou.Repositories.DTOs.UserDTO
 {
     public class UpdateUserDTO
     {

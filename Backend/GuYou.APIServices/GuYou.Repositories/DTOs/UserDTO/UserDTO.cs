@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuYou.Repositories.DTOs
+namespace GuYou.Repositories.DTOs.UserDTO
 {
     public class UserDTOValidator : AbstractValidator<UserDTO>
     {
@@ -39,6 +39,7 @@ namespace GuYou.Repositories.DTOs
         public required string Username { get; set; }
         public required string Password { get; set; }
         public required string FullName { get; set; }
+        public string? ImagePath{get; set;}
         public required string PhoneNumber { get; set; }
         public required string RoleID { get; set; }
     }

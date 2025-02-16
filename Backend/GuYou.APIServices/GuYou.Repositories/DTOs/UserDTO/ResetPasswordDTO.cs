@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuYou.Repositories.DTOs
+namespace GuYou.Repositories.DTOs.UserDTO
 {
     public class ResetPasswordDTOValidator : AbstractValidator<ResetPasswordDTO>
     {
@@ -29,7 +29,7 @@ namespace GuYou.Repositories.DTOs
     }
     public class ResetPasswordDTO
     {
-        public ResetPasswordDTO(string email, string otp,  string newPassword, string confirmPassword)
+        public ResetPasswordDTO(string email, string otp, string newPassword, string confirmPassword)
         {
             Email = email;
             NewPassword = newPassword;

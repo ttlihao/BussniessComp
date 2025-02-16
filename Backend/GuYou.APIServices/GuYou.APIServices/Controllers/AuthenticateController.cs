@@ -1,5 +1,5 @@
 ﻿using GuYou.Repositories.Configure;
-using GuYou.Repositories.DTOs;
+using GuYou.Repositories.DTOs.UserDTO;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;

@@ -6,14 +6,14 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
-using GuYou.Repositories.DTOs;
 using GuYou.Repositories.Models;
 using GuYou.Services.Interfaces;
 using GuYou.Repositories.Repositories.Interfaces;
-using GuYou.Repositories.Base;
 using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using GuYou.Repositories.Configure;
+using GuYou.Repositories.DTOs.UserDTO;
+using GuYou.Repositories.Repositories.Implements;
 
 namespace GuYou.Services.Implements
 {

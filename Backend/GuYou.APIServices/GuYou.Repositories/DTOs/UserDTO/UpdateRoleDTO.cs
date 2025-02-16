@@ -1,4 +1,4 @@
-﻿namespace GuYou.Repositories.DTOs
+﻿namespace GuYou.Repositories.DTOs.UserDTO
 {
     public class UpdateRoleDTO
     {
