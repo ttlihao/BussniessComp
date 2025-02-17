@@ -6,14 +6,14 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
-using GuYou.Repositories.DTOs;
 using GuYou.Repositories.Models;
 using GuYou.Services.Interfaces;
 using GuYou.Repositories.Repositories.Interfaces;
-using GuYou.Repositories.Base;
 using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using GuYou.Repositories.Configure;
+using GuYou.Repositories.DTOs.UserDTO;
+using GuYou.Repositories.Repositories.Implements;
 
 namespace GuYou.Services.Implements
 {
@@ -418,12 +418,6 @@ namespace GuYou.Services.Implements
             <p>Your secret code is:</p>
             <div class=""code-box"">{code}</div>
 
-            <p>To reset your password, click on the button below:</p>
-            <p><a href='{resetUrl}' class='button'>Reset password</a></p>
-
-            <p>Or copy and paste the URL into your browser:</p>
-            <p><a href='{resetUrl}'>{resetUrl}</a></p>
-
             <p>If you didn't request this, please ignore this email.</p>
             <p>Thanks,</p>
             <p>GuYou Coffee</p>
@@ -452,7 +446,7 @@ namespace GuYou.Services.Implements
             var result = await _userManager.ResetPasswordAsync(user, resetToken, request.NewPassword);
             if (result.Succeeded)
             {
-                //user.EmailCode = null; // Uncomment if you need to clear the email code
+                user.EmailCode = null; // Uncomment if you need to clear the email code
                 await _userManager.UpdateAsync(user);
                 var selectedEmail = new List<string> { request.Email };
                 var time = _timeService.SystemTimeNow.ToString("yyyy-MM-dd HH:mm:ss");

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuYou.Repositories.Services
+namespace GuYou.Services.Implements
 {
     public class TimeService : ITimeService
     {

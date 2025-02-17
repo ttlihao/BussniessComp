@@ -1,4 +1,4 @@
-﻿using GuYou.Repositories.DTOs;
+﻿using GuYou.Repositories.DTOs.UserDTO;
 
 namespace GuYou.Services.Interfaces
 {

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using GuYou.Repositories.DTOs;
+using GuYou.Repositories.DTOs.UserDTO;
 using GuYou.Repositories.Models;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace GuYou.Repositories.Services
+namespace GuYou.Services.Implements
 {
     public class RoleService : IRoleService
     {
