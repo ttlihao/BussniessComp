@@ -11,6 +11,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import NotAuthorized from "@/pages/NotAuthorized/NotAuthorized";
 import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
 import CustomerDashboard from "@/pages/customer/dashboard/CustomerDashboard";
+import ProductPage from "@/pages/ProductPage/ProductPage";
+import ProductDetailPage from "@/pages/ProductDetailPage/ProductDetailPage";
 
 export const router = createBrowserRouter([
   {
@@ -29,16 +31,24 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/sign-in",
+        path: "sign-in",
         element: <SignInPage />,
       },
       {
-        path: "/sign-up",
+        path: "sign-up",
         element: <SignUpPage />,
       },
       {
-        path: "/forgot-password",
+        path: "forgot-password",
         element: <ForgotPasswordPage />,
+      },
+      {
+        path: "products",
+        element: <ProductPage />,
+      },
+      {
+        path: "products/:productID",
+        element: <ProductDetailPage />,
       },
     ],
   },

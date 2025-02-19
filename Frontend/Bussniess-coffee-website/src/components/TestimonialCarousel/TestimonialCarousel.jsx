@@ -135,7 +135,7 @@ const testimonials = [
   },
   {
     avatar:
-      "https://i.pinimg.com/originals/08/d2/f3/08d2f33ea27807f1ba381f5aa335ae63.jpg",
+      "https://p16-va.lemon8cdn.com/tos-alisg-v-a3e477-sg/o4s96kgvfEEVWqBCAB2yYXCRdiBQieAEyrAI25~tplv-tej9nj120t-origin.webp",
     name: "David Wilson",
     comment: "Dịch vụ chăm sóc khách hàng tốt!",
     rating: 5,

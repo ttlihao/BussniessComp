@@ -1,0 +1,74 @@
+@use "../../untils/base";
+
+.pp-container {
+  display: flex;
+  justify-content: center;
+  //   height: 50vh;
+  padding: 4rem 0;
+
+  .pp-div {
+    width: 80%;
+    // background-color: lightcyan;
+    display: flex;
+    gap: 5%;
+  }
+
+  .pp-wrapper:last-child {
+    // flex: 1;
+    width: 70%;
+    // background-color: lightcoral;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3%;
+    justify-content: center;
+    row-gap: 1.3rem;
+  }
+}
+
+.filter-wrapper {
+  width: 23%;
+  //   background-color: lightgreen;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  //   line-height: 50px;
+
+  h3 {
+    font-size: 18px;
+    width: fit-content;
+    border-bottom: 3px solid base.$primary-color;
+  }
+
+  p {
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: base.$primary-color;
+    }
+  }
+}
+
+.coffee-card-container {
+  width: 30%;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+
+  h2 {
+    font-weight: bold;
+  }
+  h3 {
+    font-weight: bold;
+    color: base.$primary-color;
+  }
+  &:hover {
+    transform: scale(1.07);
+  }
+}
