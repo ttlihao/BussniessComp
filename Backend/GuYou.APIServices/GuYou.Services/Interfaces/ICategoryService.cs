@@ -1,10 +1,7 @@
-﻿using GuYou.Repositories.DTOs.Paging;
-using GuYou.Repositories.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.Request;
 
 namespace GuYou.Services.Interfaces
 {
@@ -12,7 +9,7 @@ namespace GuYou.Services.Interfaces
     {
         Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync();
         Task<CategoryDto> GetCategoryByIdAsync(int id);
-        Task<CategoryDto> CreateCategoryAsync(CategoryDto categoryDto);
+        Task<CategoryDto> CreateCategoryAsync(CreateCategoryRequest request);
         Task<bool> UpdateCategoryAsync(CategoryDto categoryDto);
         Task<bool> DeleteCategoryAsync(int id);
         Task<PagedResult<CategoryDto>> GetPagedCategoriesAsync(PageRequest pageRequest);

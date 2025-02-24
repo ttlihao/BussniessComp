@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using GuYou.Repositories.DTOs;
-using GuYou.Repositories.DTOs.UserDTO;
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.UserDTO;
+using GuYou.Contracts.Request;
 using GuYou.Repositories.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -20,7 +21,7 @@ namespace GuYou.Repositories.Configure
 
             // Category
             CreateMap<Category, CategoryDto>().ReverseMap();
-
+            CreateMap<Category, CreateCategoryRequest>().ReverseMap();
             // CoffeeBean
             CreateMap<CoffeeBean, CoffeeBeanDto>().ReverseMap();
 

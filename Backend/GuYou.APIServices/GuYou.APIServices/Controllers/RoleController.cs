@@ -1,4 +1,5 @@
-﻿using GuYou.Repositories.DTOs.UserDTO;
+﻿using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.UserDTO;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

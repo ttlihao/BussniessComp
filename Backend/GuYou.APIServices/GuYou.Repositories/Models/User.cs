@@ -1,4 +1,4 @@
-﻿using GuYou.Repositories.Base;
+﻿using GuYou.Contracts.Base;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;

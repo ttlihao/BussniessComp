@@ -1,4 +1,6 @@
-﻿using GuYou.Repositories.DTOs.UserDTO;
+﻿using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.DTOs.UserDTO;
 
 namespace GuYou.Services.Interfaces
 {

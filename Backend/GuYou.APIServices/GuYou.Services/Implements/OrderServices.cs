@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using GuYou.Repositories.DTOs;
-using GuYou.Repositories.DTOs.Paging;
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.DTOs.UserDTO;
 using GuYou.Repositories.Models;
 using GuYou.Repositories.Repositories.Implements;
 using GuYou.Repositories.Repositories.Interfaces;
@@ -44,6 +45,7 @@ namespace GuYou.Services.Implements
             {
                 var newOrder = _mapper.Map<Order>(newOrderDto);
                 newOrder.CreatedBy = _userContextService.GetCurrentUserId();
+                newOrder.UserId = newOrder.CreatedBy; 
                 newOrder.LastUpdatedBy = newOrder.CreatedBy;
                 newOrder.CreatedTime = _timeService.SystemTimeNow;
                 newOrder.LastUpdatedTime = _timeService.SystemTimeNow;

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GuYou.Repositories.DTOs;
-using GuYou.Repositories.DTOs.Paging;
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
 using GuYou.Repositories.Repositories.Implements;
 using GuYou.Repositories.Repositories.Interfaces;
 using GuYou.Services.Interfaces;

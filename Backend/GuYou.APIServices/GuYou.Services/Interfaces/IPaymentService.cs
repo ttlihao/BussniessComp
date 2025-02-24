@@ -1,5 +1,6 @@
-﻿using GuYou.Repositories.DTOs.Paging;
-using GuYou.Repositories.DTOs;
+﻿using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.DTOs.UserDTO;
 
 public interface IPaymentService
 {

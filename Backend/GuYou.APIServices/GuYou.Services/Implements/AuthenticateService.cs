@@ -12,8 +12,8 @@ using GuYou.Repositories.Repositories.Interfaces;
 using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using GuYou.Repositories.Configure;
-using GuYou.Repositories.DTOs.UserDTO;
 using GuYou.Repositories.Repositories.Implements;
+using GuYou.Contracts.DTOs.UserDTO;
 
 namespace GuYou.Services.Implements
 {

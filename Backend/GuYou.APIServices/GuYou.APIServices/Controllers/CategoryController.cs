@@ -1,10 +1,8 @@
-﻿using GuYou.Repositories.DTOs;
-using GuYou.Repositories.DTOs.Paging;
+﻿using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.Request;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace GuYou.APIServices.Controllers
 {
@@ -53,11 +51,11 @@ namespace GuYou.APIServices.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CategoryDto>> CreateCategory([FromBody] CategoryDto newCategory)
+        public async Task<ActionResult<CategoryDto>> CreateCategory(CreateCategoryRequest request)
         {
             try
             {
-                var createdCategory = await _categoryService.CreateCategoryAsync(newCategory);
+                var createdCategory = await _categoryService.CreateCategoryAsync(request);
                 return CreatedAtAction(nameof(GetCategoryById), new { id = createdCategory.CategoryId }, createdCategory);
             }
             catch (Exception ex)

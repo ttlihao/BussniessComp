@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using GuYou.Repositories.DTOs;
-using GuYou.Repositories.DTOs.Paging;
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.Request;
 using GuYou.Repositories.Models;
 using GuYou.Repositories.Repositories.Implements;
 using GuYou.Repositories.Repositories.Interfaces;
@@ -38,7 +39,7 @@ namespace GuYou.Services.Implements
             return _mapper.Map<CategoryDto>(categoryEntity);
         }
 
-        public async Task<CategoryDto> CreateCategoryAsync(CategoryDto newCategoryDto)
+        public async Task<CategoryDto> CreateCategoryAsync(CreateCategoryRequest newCategoryDto)
         {
             try
             {

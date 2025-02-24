@@ -1,5 +1,5 @@
-﻿using GuYou.Repositories.DbContext;
-using GuYou.Repositories.DTOs.Paging;
+﻿using GuYou.Contracts.DTOs.Paging;
+using GuYou.Repositories.DbContext;
 using GuYou.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

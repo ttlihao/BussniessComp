@@ -1,5 +1,7 @@
 ﻿using GuYou.Repositories.Configure;
-using GuYou.Repositories.DTOs.UserDTO;
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
+using GuYou.Contracts.DTOs.UserDTO;
 using GuYou.Repositories.Models;
 using Microsoft.AspNetCore.Identity;
 using System;

@@ -1,7 +1,8 @@
-﻿using GuYou.Repositories.DTOs;
-using GuYou.Repositories.DTOs.Paging;
+﻿
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using GuYou.Contracts.DTOs;
+using GuYou.Contracts.DTOs.Paging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

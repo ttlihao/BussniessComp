@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GuYou.Repositories.DTOs.UserDTO;
+using GuYou.Contracts.DTOs.UserDTO;
 using GuYou.Repositories.Models;
 using GuYou.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;

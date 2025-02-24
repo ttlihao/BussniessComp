@@ -1,4 +1,4 @@
-﻿using GuYou.Repositories.Base;
+﻿using GuYou.Contracts.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

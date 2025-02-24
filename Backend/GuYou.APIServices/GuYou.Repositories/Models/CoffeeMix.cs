@@ -1,4 +1,4 @@
-﻿using GuYou.Repositories.Base;
+﻿using GuYou.Contracts.Base;
 using GuYou.Repositories.Models;
 
 public class CoffeeMix : BaseEntity
