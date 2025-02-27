@@ -16,7 +16,7 @@ function SignUpPage() {
           password: values.password,
           fullName: values.name,
           phoneNumber: values.phone,
-          roleID: "b3caf412-8676-4f80-95c5-a03853e2f189", // Role mặc định
+          roleID: "0471596f-3055-49d6-8c39-fb4cbb2e600c", // Role mặc định
         };
 
         const response = await axios.post(

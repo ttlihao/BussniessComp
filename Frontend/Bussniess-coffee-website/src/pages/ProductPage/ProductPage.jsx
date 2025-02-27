@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductPage.scss";
 import { useNavigate } from "react-router-dom";
+import { CoffeeCard } from "@/components/CoffeeCard/CoffeeCard";
 
 function ProductPage() {
   const filterList = [
@@ -55,17 +56,6 @@ function ProductPage() {
   );
 }
 
-const CoffeeCard = () => {
-  const navigate = useNavigate();
-  const handleProductDetail = () => navigate(`/products/1`);
-  return (
-    <div className="coffee-card-container" onClick={handleProductDetail}>
-      <img src="./imgs/coffee3.png" alt="coffee img" />
-      <h2>Đậm hương CHOCO - RUTTY</h2>
-      <p>80% ARABICA - 20% ROBUSTA</p>
-      <h3>Từ 200,000Đ</h3>
-    </div>
-  );
-};
+
 
 export default ProductPage;

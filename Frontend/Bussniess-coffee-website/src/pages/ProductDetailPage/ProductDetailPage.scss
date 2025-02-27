@@ -1,3 +1,139 @@
+@use "../../untils/base";
+
 .pdp-wrapper{
-    
+    .pdp-title{
+        font-weight: 600;
+        font-size:20px;
+    }
+    .pdp-product-item{
+        .pdp-item{
+            display: flex;
+            gap: 2rem;
+            // background-color: lightgray;
+
+            .pi-img{
+                width: 40%;
+            // height: 80%;
+                display: flex;
+                justify-content: center;
+                img{
+                    width: 100%;
+                // height:  35;
+                border-radius: 10px;
+                }
+            }
+
+            .pi-div{
+                display: flex;
+                flex-direction: column;
+                gap: .9rem;
+                h1{
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    
+                }
+                h2{
+                    font-weight: 600;
+                    font-size: 1.4rem;
+                }
+                h5{
+                    font-weight: 600;
+                    
+                }
+                .items{
+                    display: flex;
+                    gap: 2rem;
+                    align-items: center;
+                    .item{
+                        display: flex;
+                        gap: 1rem;
+                        align-items: center;
+                        button{
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            text-align: center;
+                            border: 1px solid black;
+                            &:first-child{
+                                margin-left: 1rem;
+                                
+                            }
+                        }
+                    }
+                }
+                a{
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    color: base.$primary-color;
+                    transition: all 0.3s;
+                    margin: .6rem 0;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                    &:active{
+                        color: base.$button-hover-color;
+                    }
+                }
+                .btn-add-to-cart{
+                    border-radius: 5px;
+                    background-color: base.$primary-color;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    color: white;
+                    padding: .7rem 1.2rem;
+                    width: fit-content;
+                    transition: ease-in-out 0.3s;
+                    &:hover{
+                        background-color: base.$button-hover-color;
+                    }
+                    &:active{
+                        opacity: .7;
+                    }
+
+                }
+            }
+        }
+        .pdp-h2{
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 3rem;
+        }
+        .pdp-review-list{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .pdp-coffee-ls{
+            display: flex;
+            margin-top: .6rem;
+            // background-color: lightblue;
+            justify-content: space-between;
+        }
+    }
+}
+
+.review-container{
+    display: flex;
+    gap: 2rem;
+    img{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+    }
+    .review-info{
+        font-size: 16px;
+        margin: 0;
+        p{
+            &:nth-child(1){
+                margin-bottom: -5px;
+                font-weight: 600;
+            }
+            &:nth-child(3){
+                font-size: 14px;
+                margin-bottom: .4rem;
+            }
+
+        }
+    }
 }

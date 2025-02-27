@@ -46,7 +46,7 @@ function Header() {
         {userData.roleName === "admin" && (
           <div
             className="ddm-item"
-            onClick={() => handleNavigate("/dashboard")}
+            onClick={() => handleNavigate("/admin/dashboard")}
           >
             <MdOutlineSpaceDashboard size={26} style={{ margin: "0 12px" }} />
             <p>Dashboard</p>

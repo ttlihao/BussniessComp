@@ -13,6 +13,7 @@ import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
 import CustomerDashboard from "@/pages/customer/dashboard/CustomerDashboard";
 import ProductPage from "@/pages/ProductPage/ProductPage";
 import ProductDetailPage from "@/pages/ProductDetailPage/ProductDetailPage";
+import AdminLayout from "@/pages/admin/layout/AdminLayout";
 
 export const router = createBrowserRouter([
   {
@@ -53,17 +54,49 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin-dashboard",
+    path: "/admin",
     element: (
       <ProtectedRoute allowedRoles={"admin"}>
         <ScrollToTop />
-        <Outlet />
+        <AdminLayout/>
       </ProtectedRoute>
     ),
     children: [
       {
         path: "dashboard",
         element: <AdminDashboard />,
+      },
+      {
+        path:'setting',
+        element:<div><h1>Setting Page</h1></div>
+      },
+      {
+        path:'promotion',
+        element:<div><h1>Promotion Page</h1></div>
+      },
+      {
+        path:'product/coffee-bean',
+        element:<div><h1>Coffee Bean Page</h1></div>
+      },
+      {
+        path:'product/coffee-mix',
+        element:<div><h1>Coffee Mix Page</h1></div>
+      },
+      {
+        path:'product/category',
+        element:<div><h1>Category Page</h1></div>
+      },
+      {
+        path:'orders',
+        element:<div><h1>Order Page</h1></div>
+      },
+      {
+        path:'customers',
+        element:<div><h1>Customer Page</h1></div>
+      },
+      {
+        path:'account',
+        element:<div><h1>Account Page</h1></div>
       },
     ],
   },
